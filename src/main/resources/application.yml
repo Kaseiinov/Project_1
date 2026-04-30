@@ -21,6 +21,7 @@ springdoc:
     path: /api-docs
   swagger-ui:
     path: /swagger-ui.html
+    url: /api-docs
 
 jwt:
   secret: "5367566859703373367639792F423F452848284D6251655468576D5A71347437"
