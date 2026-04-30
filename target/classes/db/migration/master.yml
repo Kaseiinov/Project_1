@@ -1,0 +1,5 @@
+databaseChangeLog:
+  - include:
+      file: db/migration/initial/001-create-scheme.sql
+  - include:
+      file: db/migration/initial/002-insert_test_data.sql
