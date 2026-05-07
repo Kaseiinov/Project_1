@@ -1,6 +1,6 @@
 package com.example.bankcards.security;
 
-import com.example.bankcards.service.JwtService;
+import com.example.bankcards.service.impl.JwtService;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.Cookie;
@@ -29,7 +29,7 @@ public class JwtAuthFilter extends OncePerRequestFilter {
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
 
-        String jwt = extractJwtFromCookie(request);
+        String jwt = extractJwt(request);
 
         if (jwt != null && SecurityContextHolder.getContext().getAuthentication() == null) {
             try {
@@ -56,13 +56,11 @@ public class JwtAuthFilter extends OncePerRequestFilter {
         filterChain.doFilter(request, response);
     }
 
-    private String extractJwtFromCookie(HttpServletRequest request) {
-        if (request.getCookies() == null) return null;
-
-        return Arrays.stream(request.getCookies())
-                .filter(cookie -> "jwt".equals(cookie.getName()))
-                .map(Cookie::getValue)
-                .findFirst()
-                .orElse(null);
+    private String extractJwt(HttpServletRequest request) {
+        String authHeader = request.getHeader("Authorization");
+        if (authHeader != null && authHeader.startsWith("Bearer ")) {
+            return authHeader.substring(7);
+        }
+        return null;
     }
 }

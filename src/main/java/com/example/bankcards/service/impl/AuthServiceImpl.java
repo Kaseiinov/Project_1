@@ -7,7 +7,6 @@ import com.example.bankcards.exception.exceptions.AlreadyExistException;
 import com.example.bankcards.mapper.UserMapper;
 import com.example.bankcards.repository.UserRepository;
 import com.example.bankcards.service.AuthService;
-import com.example.bankcards.service.JwtService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -40,10 +39,6 @@ public class AuthServiceImpl implements AuthService {
                 request.getEmail(),
                 request.getPassword()
         ));
-
-//        UserDetails user = userService
-//                .userDetailsService()
-//                .loadUserByUsername(request.getEmail());
 
         String token = jwtService.generateToken(request.getEmail());
         return new JwtAuthResponse(token);

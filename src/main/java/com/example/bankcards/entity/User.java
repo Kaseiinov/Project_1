@@ -36,6 +36,8 @@ public class User implements UserDetails {
     @Column(name = "created_at")
     private LocalDateTime createdAt;
 
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "owner")
+    private List<Card> cards;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

@@ -1,5 +1,6 @@
 package com.example.bankcards.config;
 
+import com.example.bankcards.entity.Role;
 import com.example.bankcards.security.JwtAuthFilter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
@@ -15,6 +16,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.web.cors.CorsConfigurationSource;
 
 
 @Configuration
@@ -24,6 +26,8 @@ public class SecurityConfig {
     private final JwtAuthFilter jwtAuthFilter;
     private final UserDetailsService userDetailsService;
     private final PasswordEncoder passwordEncoder;
+    private final CorsConfigurationSource corsConfigurationSource;
+
 
     @Bean
     public AuthenticationProvider authenticationProvider() {
@@ -45,6 +49,7 @@ public class SecurityConfig {
                 .formLogin(AbstractHttpConfigurer::disable)
                 .logout(AbstractHttpConfigurer::disable)
                 .csrf(AbstractHttpConfigurer::disable)
+                .cors(cors -> cors.configurationSource(corsConfigurationSource))
                 .authenticationProvider(authenticationProvider())
                 .authorizeHttpRequests(authorize -> authorize
                         .requestMatchers(
@@ -54,6 +59,7 @@ public class SecurityConfig {
                                 "/api-docs"
                         ).permitAll()
                         .requestMatchers("/api/auth/**").permitAll()
+                        .requestMatchers("/api/admin/**").hasAuthority(Role.ROLE_ADMIN.name())
                         .anyRequest().authenticated()
                 )
 
