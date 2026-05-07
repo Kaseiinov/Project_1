@@ -21,15 +21,9 @@ springdoc:
     path: /api-docs
   swagger-ui:
     path: /swagger-ui.html
-    url: /api-docs
+  writer-with-default-pretty-printer: true
 
 jwt:
   secret: "5367566859703373367639792F423F452848284D6251655468576D5A71347437"
   expiration: 86400000
 
-#
-#Что нужно сделать:
-#  - Указать настройки подключения к базе данных.
-#  - Указать порт приложения.
-#  - Настроить параметры безопасности и JWT.
-#  - Включить Swagger UI.

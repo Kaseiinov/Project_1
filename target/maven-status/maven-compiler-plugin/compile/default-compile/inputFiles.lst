@@ -1,5 +1,6 @@
 /Users/legacy/IdeaProjects/Bank_REST/src/main/java/com/example/bankcards/BankCardsApplication.java
 /Users/legacy/IdeaProjects/Bank_REST/src/main/java/com/example/bankcards/config/ApplicationConfig.java
+/Users/legacy/IdeaProjects/Bank_REST/src/main/java/com/example/bankcards/config/CorsConfig.java
 /Users/legacy/IdeaProjects/Bank_REST/src/main/java/com/example/bankcards/config/SecurityConfig.java
 /Users/legacy/IdeaProjects/Bank_REST/src/main/java/com/example/bankcards/config/SwaggerConfig.java
 /Users/legacy/IdeaProjects/Bank_REST/src/main/java/com/example/bankcards/controller/AdminController.java
@@ -24,6 +25,7 @@
 /Users/legacy/IdeaProjects/Bank_REST/src/main/java/com/example/bankcards/exception/exceptions/CustomException.java
 /Users/legacy/IdeaProjects/Bank_REST/src/main/java/com/example/bankcards/exception/exceptions/MessageSendingException.java
 /Users/legacy/IdeaProjects/Bank_REST/src/main/java/com/example/bankcards/exception/exceptions/NotFoundException.java
+/Users/legacy/IdeaProjects/Bank_REST/src/main/java/com/example/bankcards/mapper/CardMapper.java
 /Users/legacy/IdeaProjects/Bank_REST/src/main/java/com/example/bankcards/mapper/UserMapper.java
 /Users/legacy/IdeaProjects/Bank_REST/src/main/java/com/example/bankcards/repository/CardRepository.java
 /Users/legacy/IdeaProjects/Bank_REST/src/main/java/com/example/bankcards/repository/UserRepository.java

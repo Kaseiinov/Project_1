@@ -3,11 +3,11 @@ services:
     image: postgres:15
     container_name: bank_postgres
     environment:
-      POSTGRES_DB: bank_db
-      POSTGRES_USER: bank_user
-      POSTGRES_PASSWORD: bank_password
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
     ports:
-      - "5433:5432"
+      - "${POSTGRES_PORT}:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
 
@@ -19,11 +19,11 @@ services:
     ports:
       - "8080:8080"
     environment:
-      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/bank_db
-      SPRING_DATASOURCE_USERNAME: bank_user
-      SPRING_DATASOURCE_PASSWORD: bank_password
-      JWT_SECRET: mySecretKey12345678901234567890123456789012
-      JWT_EXPIRATION: 86400000
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/${POSTGRES_DB}
+      SPRING_DATASOURCE_USERNAME: ${POSTGRES_USER}
+      SPRING_DATASOURCE_PASSWORD: ${POSTGRES_PASSWORD}
+      JWT_SECRET: ${JWT_SECRET}
+      JWT_EXPIRATION: ${JWT_EXPIRATION}
 
 volumes:
   postgres_data:
