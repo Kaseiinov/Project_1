@@ -38,7 +38,6 @@ public class CardEncryptionService {
     }
 
     public String mask(String cardNumber) {
-        // "1234567812345678" -> "**** **** **** 5678"
         String last4 = cardNumber.substring(cardNumber.length() - 4);
         return "**** **** **** " + last4;
     }

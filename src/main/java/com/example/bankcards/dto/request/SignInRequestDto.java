@@ -1,10 +1,12 @@
 package com.example.bankcards.dto.request;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 
+@Schema(description = "Request to sign in")
 @Data
 @RequiredArgsConstructor
 public class SignInRequestDto {
